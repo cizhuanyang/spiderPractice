@@ -25,12 +25,13 @@ class SpiderMain(object):
         while self.urls.has_new_url():
             try:
                 new_url = self.urls.get_new_url()
+                # 格式化輸出當前的url和
                 print 'craw %d : %s' % (count, new_url)
                 html_cont = self.downloader.download(new_url)
                 new_urls, new_data = self.parser.parse(new_url, html_cont)
                 self.urls.add_new_urls(new_urls)
                 self.outputer.collect_data(new_data)
-                if count == 1000:
+                if count == 10:
                     break
                 count = count + 1
             except:
@@ -38,7 +39,8 @@ class SpiderMain(object):
         self.outputer.output_html()
 
 
+# 当模块被直接运行时，以下代码块将被运行，当模块是被导入时，代码块不被运行。
 if __name__ == "__main__":
-    root_url = "https://baike.baidu.com/item/Python/407313"
+    root_url = "https://en.wikipedia.org/wiki/Python_(programming_language)"
     obj_spider = SpiderMain()
     obj_spider.craw(root_url)
