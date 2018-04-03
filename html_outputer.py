@@ -13,17 +13,15 @@ class HtmlOutputer(object):
 
     # 将收集到的数据输出为html
     def output_html(self):
-        fout = open('output', 'w')
+        fout = open('output.html', 'w')
         fout.write("<html>")
         fout.write("<body>")
         fout.write("<table>")
         for data in self.datas:
-            fout.write("<hr>")
+            fout.write("<tr>")
             fout.write("<td>%s</td>" % data['url'])
-            fout.write("</hr>")
-            fout.write("<hr>")
-        fout.write("<td>%s</td>" % data['data'].encode("utf-8"))
-        fout.write("</hr>")
+            fout.write("<td>%s</td>" % data['data'])
+            fout.write("</tr>")
         fout.write("</table>")
         fout.write("</body>")
         fout.write("</html>")

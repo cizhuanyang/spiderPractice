@@ -24,7 +24,6 @@ class HtmlParser(object):
         for link in links:
             # 获得新的urld
             new_url = link['href']
-            print new_url
             # 拼接url
             new_full_url = urlparse.urljoin(page_url, new_url)
 
@@ -37,12 +36,8 @@ class HtmlParser(object):
         res_data = {}
         res_data['url'] = page_url
         # 获取标题
-        title_node = soup.find_all('p')
-        content=[]
-        for program in title_node
-            content.append(program.get_text())
+        content = soup.find_all('p')
         res_data['data']=content
-
         return res_data
 
 
